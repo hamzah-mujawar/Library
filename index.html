@@ -7,7 +7,36 @@
         <link href="styles/style.css" rel="stylesheet">
     </head>
     <body>
-        <table id="table"></table>
+        <table id="table">
+            <thead>
+                <th>author</th>
+                <th>title</th>
+                <th>pages</th>
+                <th>read?</th>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+        <dialog id="addBooks">
+            <form>
+                <label for="author">Author:</label><br>
+                <input type="text" id="author" name="author" value="J.R.R Tolkien"><br><br>
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" value="The Lord of the Rings"><br><br>
+                <label for="pages">Pages:</label><br>
+                <input type="number" id="pages" name="pages" value="1077"><br><br>
+                <input type="checkbox" id="read" name="read" value="read">
+                <label for="checkbox">Have you read it?</label><br>
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Confirm</button>
+                </div>
+            </form>
+        </dialog>
+        <p>
+            <button id="showDialog">Add a book</button>
+        </p>
+        <output></output>
         <script src="scripts/main.js"></script>   
     </body>
 </html>
