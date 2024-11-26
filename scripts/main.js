@@ -10,23 +10,22 @@ const pages_form = document.getElementById("pages");
 const read_checkbox = document.getElementById("read");
 const confirmBtn = document.getElementById("confirmBtn");
 
-//Constructor for a Book object
-function Book(title, author, pages, read)
-{
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
 
-// prototype method that all instances of books can acquire
-Book.prototype.toggleRead = function(){
-    this.read ^= 1;
+class Book{
+    constructor(title, author, pages, read) {
+	this.title = title;
+	this.author = author;
+	this.pages = pages;
+	this.read = read;
+    }
+    toggleRead() {
+	this.read ^= 1;
+    }
 }
 
 /**
  * function used to update the table in the DOM, this function does the following things:
- * 1) Adds a table row and fills it with book details such as title, author, pages, and if the user has read the book.
+/ * 1) Adds a table row and fills it with book details such as title, author, pages, and if the user has read the book.
  * 2) Adds a delete button for that book entry and an event listener for that button that checks if the button is pressed,
  * we delete that object in the myLibrary array and display the new table
  * 3) Adds a button to toggle if the book has been read, if pressed the function prototype method for every Book object
@@ -74,13 +73,13 @@ function displayTable()
         deleteButton.addEventListener("click", ()=>{
             myLibrary.splice(book, 1); //remove that book from the array
             displayTable();
-        })
+        });
         
         //event listener to toggle the books read status
         readButton.addEventListener("click", ()=>{
             book.toggleRead();
             displayTable();
-        })
+        });
         
         table.appendChild(row);//add the row on the table body
     });
@@ -101,7 +100,7 @@ function addBookToLibrary(title, author, pages, read)
 // the button to add books
 showButton.addEventListener("click", ()=>{
     addBooks.showModal();
-})
+});
 
 /*
  * In the dialog box once the user fills up the form and clicks on confirm
@@ -115,7 +114,7 @@ confirmBtn.addEventListener("click", (event)=>{
         pages_form.value,
         read_checkbox.checked
     ));
-})
+});
 
 
 //displayTable(); //Initial call to display any prexisting books in the library
